@@ -9,10 +9,11 @@
     --cinza-700: #29292e;
     --cinza-800: #202024;
     --cinza-900: #121214;
-
+    --verde-opacity80: rgba(30, 41, 12, 0.5);
     --verde-300: #00B37E;
     --verde-500: #00875f;
 }
+
 * {
     margin: 0;
     padding: 0;
