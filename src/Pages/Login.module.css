@@ -1,23 +1,24 @@
 .FormLogin {
-    background-color: rgba(0,0,0,0.8);
     display: flex;
     flex-direction: column;
 
     justify-content: center;
     align-items: center;
-    height: 100vb;
-    width:  100%;
-    background-image: url('./img/PlanoDeFundoLogin.jpg');
+    height: 100vh;
+    width: 100%;
+    background-image: url('./public/img/PlanoDeFundoLogin.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
-.content{
+
+.content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(245, 245, 220,0.4);
+    background-color: rgba(0,0,0, 0.3);
+    margin: 0 1rem;
     padding: 3rem;
     border-radius: 25px;
 }
@@ -29,17 +30,20 @@
     flex-direction: column;
     align-items: center;
 }
+
 .FormLogin main .LogarComOutros {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
 }
+
 .FormLogin main .LogarComOutros span {
     color: var(--cinza-100);
     font-size: 1rem;
     font-weight: bold;
 }
+
 .FormLogin main .LogarComOutros .buttonsLoginAlt {
     font-size: 1rem;
     font-weight: bold;
@@ -55,13 +59,49 @@
     justify-content: flex-start;
     gap: 1.5rem;
 }
-.FormLogin main .LogarComOutros .buttonsLoginAlt:hover{
+
+.FormLogin main .LogarComOutros .buttonsLoginAlt:hover {
     color: var(--branca);
     background-color: var(--verde-300);
 }
-.FormLogin main .LogarComOutros a:nth-child(4),a:last-child{
+
+.FormLogin main .LogarComOutros .LinksLogin{
     color: var(--branca);
 }
-.FormLogin main .LogarComOutros a:hover{
+.FormLogin main .LogarComOutros .LinksLogin:hover {
+    color: var(--cinza-100);
+}
+
+.FormLogin main .LogarComOutros button:hover {
     color: var(--branca);
+    background-color: var(--verde-300);
+}
+.FormLogin .content .LogarComOutros button{
+    width: 15rem;
+    height: 2.4rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.6;
+    background-color: var(--verde-500);
+    color: var(--cinza-100);
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+} 
+.FormLogin .content .LogarComOutros button svg{
+    margin-left: 1.2rem;
+} 
+@media (max-width: 768px) {
+    html{
+        font-size: 87.5%;
+    }
+    .FormLogin {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

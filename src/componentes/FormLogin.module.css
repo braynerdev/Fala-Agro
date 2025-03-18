@@ -54,4 +54,29 @@
     gap: 1rem;
     color: var(--cinza-100);
 }
-
+@media (max-width: 768px){
+    .FormContent{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 100%;
+        max-height: 100vh;
+    }
+    .FormContent form{
+        max-width: 100%;
+        max-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .FormContent form input{
+        max-width: 100%;
+        max-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

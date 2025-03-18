@@ -1,0 +1,21 @@
+.indexContet{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    color: var(--cinza-700);
+    gap: 2rem;
+}
+.indexContet p{
+    padding: 0 5rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+.indexContet .linksIndex {
+    background-color: var(--verde-500);
+    color: var(--branca);
+    padding: 1rem 3rem;
+    border-radius: 8px;
+    text-decoration: none;
+}

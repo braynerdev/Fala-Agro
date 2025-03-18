@@ -33,3 +33,11 @@ button {
     font-weight: 400;
     font-size: 1rem;
 }
+@media (max-width: 768px){
+    StrictMode{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 48rem;
+    }
+}
