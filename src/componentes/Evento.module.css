@@ -1,0 +1,30 @@
+.Evento{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+    font-size: 1.2rem;
+    padding-top: 1.5rem;
+}
+.img{
+    border-radius: 3rem; 
+    width: 5rem;
+    height: 5rem;
+}
+legend{
+    text-align: center;
+    color: rgb(0, 87, 0);
+}
+span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#progress{
+    width: 15rem;
+}
+.Evento + .Evento{
+    margin-top: 1.5rem;
+    border-top: 0.1rem solid grey;
+}
