@@ -5,22 +5,41 @@ import { Facebook, Google } from 'react-bootstrap-icons'
 export function Login() {
     return (
         <div className={styles.FormLogin}>
-            <div className={styles.content}>
-                <img src={LogoFalaAgro} />
-                <div className={styles.FormContent}>
+            <div className={styles.DivImg}>
+
+            </div>
+            <div className={styles.DivForm}>
+                <img className={styles.Img} src={LogoFalaAgro}/>
+                <div className={styles.DivCamposForm}>
                     <form method="post" autoComplete='off'>
-                        <input placeholder="username" type="text" name="username" id="id_username" />
-                        <input placeholder="senha" type="password" name="senha" id="id_senha" />
+                        <div class="row mb-2">
+                            <div class="md-12 form-floating">
+                                <input type="text" placeholder='Username' name="username" className='form-control'  id="id_username" />
+                                    <label id={styles.labelUsuario} for="id_username">Usuário</label>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12 form-floating">
+                                <input type="password" placeholder="Senha" className='form-control' name="senha" id="id_senha" />
+                                    <label id={styles.labelSenha} htmlFor="id_senha">Senha</label>
+                            </div>
+                        </div>
+                        <div className={styles.footerForm}>
+                            <label for="id_lembrarDeMin" className={styles.lembraDeMin}>
+                                <input type="checkbox" className='form-check-input' name="lebrarDeMin" id="id_lembrarDeMin" />
+                                Lembrar de min? 
+                            </label>
+                            <a href="#">Esqueceu senha?</a>
+                        </div>
                         <button type="submit">Login</button>
                     </form>
+                    <div className={styles.LogarComOutros}>
+                        <span>OU</span>
+                        <a><Google size={21} /> Login com Google</a>
+                        <a><Facebook size={21} /> Login com Facebook</a>
+                    </div>
                 </div>
-                <div className={styles.LogarComOutros}>
-                    <span>OU</span>
-                    <button><Google size={21} /> Login com Google</button>
-                    <button><Facebook size={21} /> Login com Facebook</button>
-                    <a className={styles.LinksLogin} href="#">Esqueceu a senha?</a>
-                    <a className={styles.LinksLogin} href="#">Primeira vez aqui? <strong>Registre-se agora.</strong></a>
-                </div>
+                <a className={styles.Registrar} href="#"><span>Primeira vez aqui?</span> <strong>Registre-se agora.</strong></a>
             </div>
         </div>
     );
