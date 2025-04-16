@@ -98,17 +98,16 @@
                 button {
                     width: 20rem;
                     height: 2.3rem;
-                    background-color: #ffff;
+                    background-color:  #8ff723;
                     font-weight: bold;
-                    color: #7fe613;
-                    border: 1px solid #7fe613;
+                    color: #ffff;
+                    border: 1px solid #8ff723;
                     border-radius: 8px;
                 }
-
                 button:hover {
-                    background-color: #7fe613;
+                    background-color: #66b80f;
                     color: #ffff;
-                    border: 3px solid #7fe613;
+                    border: 3px solid #66b80f;
                 }
             }
 
@@ -131,15 +130,15 @@
                     gap: 1rem;
                     width: 20rem;
                     height: 2.3rem;
-                    background: none;
-                    border: 1px solid #7fe613;
-                    color: #7fe613;
+                    background: #8ff723;
+                    border: 1px solid #8ff723;
+                    color: #ffff;
                     border-radius: 8px;
                 }
 
                 a:hover {
-                    background: #7fe613;
-                    border: 1px solid #7fe613;
+                    background: #66b80f;
+                    border: 1px solid #66b80f;
                     color: #ffff;
                 }
             }

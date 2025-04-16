@@ -22,6 +22,5 @@ Este repositório contém o desenvolvimento web do front-end do site **Fala Agro
 - Claudio Eduardo  
 
 ## **Tecnologias Utilizadas**
-- **React** – Framework JavaScript para construção da interface do usuário  
-- **Bootstrap** – Biblioteca para estilização responsiva e componentes prontos  
-
+- **React** –  Biblioteca JavaScript para construção da interface do usuário  
+- **Bootstrap** – Framework para estilização responsiva e componentes prontos  
