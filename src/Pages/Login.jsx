@@ -15,7 +15,7 @@ export function Login() {
                         <div class="row mb-2">
                             <div class="md-12 form-floating">
                                 <input type="text" placeholder='Username' name="username" className='form-control'  id="id_username" />
-                                    <label id={styles.labelUsuario} for="id_username">bione</label>
+                                    <label id={styles.labelUsuario} for="id_username">Usuário</label>
                             </div>
                         </div>
                         <div class="row mb-2">
