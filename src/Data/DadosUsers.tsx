@@ -32,6 +32,13 @@ export const UsersData: User[] = [
         email: 'vinicius@gmail.com',
         password: '09876Jvb@',
         img: 'https://github.com/EricLBuehler.png',
+    },
+    {
+        id: 5,
+        name: 'alexandre',
+        usuario: 'alexandre',
+        email: 'alexandre@gmail.com',
+        password: '09876Jvb@',
     }
 ]
 

@@ -4,7 +4,7 @@ export interface User {
     usuario: string;
     email: string;
     password: string;
-    img: string;
+    img?: string;
 }
 
 export interface UserPermissaoVendedor {
