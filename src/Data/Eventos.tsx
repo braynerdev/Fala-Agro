@@ -1,0 +1,147 @@
+import { Eventos } from "../Interface/Eventos";
+import evento1 from "../assets/eventos/20-qbkurb2061drf3q7x84ky4qfn5zao5zjq43m8n55bs.png";
+import evento2 from "../assets/eventos/age_493082_ARQ_LOGO_EVENTO_WhatsApp Image 2025-02-11 at 14.07.48.png";
+import evento3 from "../assets/eventos/c523120ff8f4d4ae6fa08ecec7b1b788.png";
+
+export const eventos: Eventos[] = [
+    {
+        id: 1,
+        nome: 'Boiada',
+        dataTime: new Date('2025-09-21T19:00:00'),
+        local: 'Vitória de Santo Antão - PE',
+        imagem: evento1,
+    },
+    {
+        id: 2,
+        nome: 'Verdão',
+        dataTime: new Date('2025-05-29T10:00:00'),
+        local: 'Gravatá - PE',
+        imagem: evento2,
+    },
+    {
+        id: 3,
+        nome: 'Forró do Sertão',
+        dataTime: new Date('2025-06-15T20:30:00'),
+        local: 'Caruaru - PE',
+        imagem: evento3,
+    },
+    {
+        id: 4,
+        nome: 'Arraiá da Vila',
+        dataTime: new Date('2025-06-23T18:00:00'),
+        local: 'Limoeiro - PE',
+        imagem: evento1,
+    },
+    {
+        id: 5,
+        nome: 'Sons do Agreste',
+        dataTime: new Date('2025-07-01T21:00:00'),
+        local: 'Surubim - PE',
+        imagem: evento2,
+    },
+    {
+        id: 6,
+        nome: 'Festival da Serra',
+        dataTime: new Date('2025-08-10T19:30:00'),
+        local: 'Triunfo - PE',
+        imagem: evento3,
+    },
+    {
+        id: 7,
+        nome: 'Noite de Sanfona',
+        dataTime: new Date('2025-07-12T22:00:00'),
+        local: 'Arcoverde - PE',
+        imagem: evento1,
+    },
+    {
+        id: 8,
+        nome: 'Maracatu na Praça',
+        dataTime: new Date('2025-09-07T17:00:00'),
+        local: 'Olinda - PE',
+        imagem: evento2,
+    },
+    {
+        id: 9,
+        nome: 'Festa do Milho',
+        dataTime: new Date('2025-06-10T15:00:00'),
+        local: 'Panelas - PE',
+        imagem: evento3,
+    },
+    {
+        id: 10,
+        nome: 'Rock no Interior',
+        dataTime: new Date('2025-10-05T20:00:00'),
+        local: 'Garanhuns - PE',
+        imagem: evento1,
+    },
+    {
+        id: 11,
+        nome: 'Jazz no Sertão',
+        dataTime: new Date('2025-08-25T18:30:00'),
+        local: 'Serra Talhada - PE',
+        imagem: evento2,
+    },
+    {
+        id: 12,
+        nome: 'Pagodão PE',
+        dataTime: new Date('2025-07-30T16:00:00'),
+        local: 'Palmares - PE',
+        imagem: evento3,
+    },
+    {
+        id: 13,
+        nome: 'Festival Raízes',
+        dataTime: new Date('2025-09-15T19:00:00'),
+        local: 'Pesqueira - PE',
+        imagem: evento1,
+    },
+    {
+        id: 14,
+        nome: 'Noite do Baião',
+        dataTime: new Date('2025-06-28T20:00:00'),
+        local: 'São Joaquim do Monte - PE',
+        imagem: evento2,
+    },
+    {
+        id: 15,
+        nome: 'Vibe do Interior',
+        dataTime: new Date('2025-08-02T22:30:00'),
+        local: 'Toritama - PE',
+        imagem: evento3,
+    },
+    {
+        id: 16,
+        nome: 'Encantos da Zona da Mata',
+        dataTime: new Date('2025-10-20T19:00:00'),
+        local: 'Nazaré da Mata - PE',
+        imagem: evento1,
+    },
+    {
+        id: 17,
+        nome: 'Noite Gospel',
+        dataTime: new Date('2025-09-01T18:00:00'),
+        local: 'Petrolina - PE',
+        imagem: evento2,
+    },
+    {
+        id: 18,
+        nome: 'Domingueira do Samba',
+        dataTime: new Date('2025-05-18T14:00:00'),
+        local: 'Recife - PE',
+        imagem: evento3,
+    },
+    {
+        id: 19,
+        nome: 'Tardezinha Pop',
+        dataTime: new Date('2025-06-22T16:00:00'),
+        local: 'Camaragibe - PE',
+        imagem: evento1,
+    },
+    {
+        id: 20,
+        nome: 'Funk do Interior',
+        dataTime: new Date('2025-07-04T23:00:00'),
+        local: 'Santa Cruz do Capibaribe - PE',
+        imagem: evento2,
+    }
+];

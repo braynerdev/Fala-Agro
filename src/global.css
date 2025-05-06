@@ -1,0 +1,52 @@
+:root {
+    --branca: #ffffff;
+    --preto: #000000;
+
+    --cinza-200: #00000066;
+    --cinza-300: #F7F7F7;
+    --cinza-400: #70757A;
+    --cinza-borda: #00000014;
+
+    --primaria-verde: #7FE613;
+
+    --marron-logo: #3D221B;
+
+    --secundaria-verde-claro-fechado: #01BE88;
+    --secundaria-verde-claro-aberto: #DEFF8E;
+
+    --neutra-cinza-escuro: #70757A;
+    --neutra-cinza-claro: #A6AFB8;
+    --neutra-branca-fechado: #F1F3F4;
+
+    --status-laranja-escuro: #F25C23;
+    --status-laranja-claro: #F29423;
+    --status-azul-claro: #88CBFF;
+
+    --verde-hover: #65B80F;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mantine-Checkbox-input {
+    cursor: pointer;
+}
+
+.mantine-PasswordInput-input,
+.mantine-TextInput-input,
+.mantine-Checkbox-input {
+    border-color: var(--primaria-verde);
+}
+
+.mantine-PasswordInput-root:focus-within .mantine-PasswordInput-input,
+.mantine-TextInput-root:focus-within .mantine-TextInput-input,
+.mantine-Checkbox-root:focus-within .mantine-Checkbox-input {
+    box-shadow: 0px 0px 10px var(--primaria-verde);
+}
+
+.mantine-Anchor-root {
+    color: var(--primaria-verde);
+}

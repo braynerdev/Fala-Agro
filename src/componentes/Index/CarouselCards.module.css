@@ -1,0 +1,51 @@
+
+.controls{
+    top: -7.6%;
+    width: 100%;
+    
+}
+
+.control {
+    background-color: rgba(0, 0, 0, 0.203) !important;
+}
+
+.button {
+    background-color: var(--primaria-verde) !important;
+}
+
+.text {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding-bottom: 0.4rem !important;
+    
+
+    & .title{
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--marron-logo);
+    }
+    & .verTodos{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        & a{
+            text-decoration: none;
+            color: var(--marron-logo);
+            font-size: 1.1rem;
+        }
+        & .control{
+            background-color: transparent !important;
+            color: var(--marron-logo);
+            border: 1px solid var(--marron-logo);
+            border-radius: 30px;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+    }
+}

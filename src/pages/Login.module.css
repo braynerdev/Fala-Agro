@@ -1,0 +1,105 @@
+.wrapper {
+  height: 100vh;
+  background-size: cover;
+  background-image: url("../assets/img/imageTelaLogin.png");
+  background-repeat: no-repeat;
+  
+
+  & .form {
+    border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    height: 100%;
+    max-width: 28.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & .title {
+      
+      margin: 1% 0 3% 0 !important;
+    }
+
+    .text {
+      gap: 0.3rem;
+      margin: 0 !important;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--neutra-cinza-claro);
+    }
+
+    .text::before,
+    .text::after {
+      content: " ";
+      flex: 1;
+      border-bottom: 1px dashed var(--neutra-cinza-claro);
+      margin: 10px;
+    }
+
+    & .button {
+      transition: all 0.62s ease;
+    }
+
+    & .button:hover {
+      background: linear-gradient(90deg, var(--secundaria-verde-claro-fechado), var(--primaria-verde))
+    }
+
+    & .inputError {
+      border-color: red;
+    }
+    & .inputError:focus-within {
+      box-shadow: 0px 0px 10px red;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center center;
+    width: 100vw;
+    height: 100vh;
+
+    & .form {
+      padding: 1rem;
+      gap: 0.3rem;
+      border: none;
+      background-color: transparent;
+      justify-content: center;
+      
+      
+      color: var(--branca);
+  
+      & .text {
+        color: var(--branca);
+      }
+      
+  
+      & .button:hover {
+        background: linear-gradient(90deg, var(--primaria-verde), var(--secundaria-verde-claro-fechado))
+      }
+      & .inputError {
+        background-color: transparente;
+      }
+      & .inputError:focus-within {
+        box-shadow: 0px 0px 10px red;
+      }
+      
+      & .visibilityToggle {
+        color: var(--primaria-verde);
+      }
+  
+      & .formInputs {
+        background-color: rgba(0, 0, 0, 0.227);
+        color: var(--branca);
+      }
+  
+      & .formInputs:checked {
+        background-color: var(--primaria-verde);
+        color: var(--branca);
+      }
+    }
+  }
+}
