@@ -19,13 +19,13 @@ export function PagNavegacao() {
               <CardsCarousel title="Perto De Você" />
           </div>
           <div className={classes.ContainerCardNoticias}>
-              <CardNoticia title="Noticias" noticias={noticias} />
+              <CardNoticia title="Notícias" noticias={noticias} />
           </div>
           <div className={classes.ContainerCardTodos}>
               <CardsCarousel title="Gratuito" />
           </div>
           <div className={classes.ContainerCardTodos}>
-              <CardsCarousel title="Proximos dias" />
+              <CardsCarousel title="Próximos Dias" />
           </div>
         </div>
       </>

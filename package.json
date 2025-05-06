@@ -2,22 +2,22 @@
   "name": "falaagroproject",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@mantine/carousel": "^7.17.7",
-    "@mantine/core": "^7.17.5",
+    "@mantine/core": "^7.17.7",
     "@mantine/form": "^7.17.5",
+    "@mantine/hooks": "^8.0.0",
     "@tabler/icons-react": "^3.31.0",
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.3",
     "styled-components": "^6.1.17"
   },

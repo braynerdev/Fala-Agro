@@ -1,3 +1,4 @@
+'use client';
 import { Carousel } from '@mantine/carousel';
 import { CardEventos } from './CardEventos';
 import { eventos } from '../../Data/Eventos';

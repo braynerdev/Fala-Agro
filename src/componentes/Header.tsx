@@ -31,7 +31,7 @@ import { UsersData, UserPermission } from '../Data/DadosUsers';
 
 
 function user(UsersData: User[]) {
-  const usuario = UsersData.find(User => User.id === 0);
+  const usuario = UsersData.find(User => User.id === 2);
   const permissao = UserPermission.find(User => User.idUser === usuario?.id);
   if (permissao) {
     const user_permission = {
@@ -63,7 +63,7 @@ export function Header() {
               className={classes.search}
               placeholder="Search"
               leftSection={<IconSearch size={20} stroke={2} />}
-              data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
+              data={['Evento1', 'Evento2', 'Evento3', 'Evento4', 'Evento5']}
               visibleFrom="xs"
               size="md"
               radius="lg"
