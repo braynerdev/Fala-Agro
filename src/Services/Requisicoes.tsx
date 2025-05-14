@@ -36,15 +36,29 @@ export function useRequisicaoCep() {
             fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`)
                 .then(response => response.json())
                 .then(data => {
-                    setLogradouro(data.street || '');
-                    setBairro(data.neighborhood || '');
-                    setCidade(data.city || '');
-                    setEstadoSelecionado(data.state || '');
-                    Notifications.show({
-                        title: 'CEP encontrado',
-                        color: 'green',
-                        message: 'CEP encontrado com sucesso.',
-                    });
+                    if (data.name == "CepPromiseError") {
+                        setLogradouro('');
+                        setBairro('');
+                        setCidade('');
+                        setEstadoSelecionado('');
+                        Notifications.show({
+                            title: 'Erro ao buscar CEP',
+                            color: 'red',
+                            message: 'CEP inválido ou não encontrado.',
+                        });
+                        return;
+                    } else {
+                        setLogradouro(data.street || '');
+                        setBairro(data.neighborhood || '');
+                        setCidade(data.city || '');
+                        setEstadoSelecionado(data.state || '');
+                        Notifications.show({
+                            title: 'CEP encontrado',
+                            color: 'green',
+                            message: 'CEP encontrado com sucesso.',
+                        });
+                    }
+
                 })
                 .catch(() => {
                     setLogradouro('');

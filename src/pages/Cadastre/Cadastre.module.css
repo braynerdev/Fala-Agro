@@ -3,11 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    background-image: url("../../assets/Img/imageTelaLogin.png");
-    background-size: cover;
-    background-position: center;
+    height: 100%;
+    width: 100%;
 
     & .cardContainer {
         width: 70%;

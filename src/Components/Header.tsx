@@ -57,7 +57,7 @@ export function Header() {
     <div className={classes.header}>
       <Container className={classes.mainSection} size="md">
         <Group wrap='nowrap' justify="space-between">
-          <Image src={logoFalaAgro} h={50} />
+          <Image src={logoFalaAgro} w={200} />
           <Group>
             <Autocomplete
               className={classes.search}

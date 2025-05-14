@@ -4,6 +4,7 @@ import { PerfilAreaDoVendedor } from './pages/SellerArea/Profile'
 import { PagNavegacao } from './pages/Index'
 import { DefaultLayout } from './Layouts/DefaultLayout'
 import { AreaDoVendedorLayout } from './Layouts/SellerAreaLayout'
+import { CadastroLayout } from './Layouts/Cadastro'
 import { Cadastre } from './pages/Cadastre/Cadastre'
 
 export function Router() {
@@ -13,10 +14,12 @@ export function Router() {
             <Route path='' element={<PagNavegacao />} />
             <Route path='index' element={<PagNavegacao />} />
         </Route>
-
+        <Route path='/cadastro' element={<CadastroLayout />}>
+            <Route path='usuario' element={<Cadastre />} />
+        </Route>
         
         <Route path="login" element={<Login />} />
-        <Route path="cadastro" element={<Cadastre />} />
+        
 
         
         <Route path='/area-do-vendedor' element={<AreaDoVendedorLayout />}>

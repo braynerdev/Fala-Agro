@@ -1,15 +1,56 @@
-import { Grid, TextInput } from '@mantine/core'
+import { Grid, TextInput, PasswordInput, Progress, Text, Popover, Box } from '@mantine/core'
 import { DatePickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import { formatCPF, formatTelefone } from '../../Services/Supabase/Mask';
-import { IconCalendar } from '@tabler/icons-react';
+import { IconCalendar, IconX, IconCheck } from '@tabler/icons-react';
 import { CadastroUsuarioItf } from '../../Interface/CadastroUsuario';
+import { useState } from 'react';
+
+
+function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
+    return (
+        <Text
+            c={meets ? 'teal' : 'red'}
+            style={{ display: 'flex', alignItems: 'center' }}
+            mt={7}
+            size="sm"
+        >
+            {meets ? <IconCheck size={14} /> : <IconX size={14} />}
+            <Box ml={10}>{label}</Box>
+        </Text>
+    );
+}
+const requirements = [
+    { re: /[0-9]/, label: 'Contém número' },
+    { re: /[a-z]/, label: 'Contém letra minúscula' },
+    { re: /[A-Z]/, label: 'Contém letra maiúscula' },
+    { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Contém símbolo especial' },
+];
+
+function getStrength(password: string) {
+    let multiplier = password.length > 5 ? 0 : 1;
+
+    requirements.forEach((requirement) => {
+        if (!requirement.re.test(password)) {
+            multiplier += 1;
+        }
+    });
+
+    return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 10);
+}
 
 export function FormCadastre(titulo: CadastroUsuarioItf) {
     const [cpf_cnpj, setCpfCnpj] = useState('');
     const [telefone, setTelefone] = useState('');
+    const [popoverOpened, setPopoverOpened] = useState(false);
+    const [value, setValue] = useState('');
+    const checks = requirements.map((requirement, index) => (
+        <PasswordRequirement key={index} label={requirement.label} meets={requirement.re.test(value)} />
+    ));
+
+    const strength = getStrength(value);
+    const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red';
     return (
         <>
             <h2>{titulo.titulo}</h2>
@@ -83,23 +124,34 @@ export function FormCadastre(titulo: CadastroUsuarioItf) {
                     />
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 3, lg: 5 }}>
-                    <TextInput
-                        label="Senha"
-                        placeholder="EX: ********"
-                        withAsterisk
-                        radius="md"
-                        required
-                        maxLength={20}
-                    />
+                    <Popover opened={popoverOpened} position="bottom" width="target" transitionProps={{ transition: 'pop' }}>
+                        <Popover.Target>
+                            <div
+                                onFocusCapture={() => setPopoverOpened(true)}
+                                onBlurCapture={() => setPopoverOpened(false)}
+                            >
+                                <PasswordInput
+                                    withAsterisk
+                                    label="Senha"
+                                    placeholder="EX: ********"
+                                    value={value}
+                                    onChange={(event) => setValue(event.currentTarget.value)}
+                                />
+                            </div>
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                            <Progress color={color} value={strength} size={5} mb="xs" />
+                            <PasswordRequirement label="Includes at least 6 characters" meets={value.length > 5} />
+                            {checks}
+                        </Popover.Dropdown>
+                    </Popover>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 3, lg: 5 }}>
-                    <TextInput
-                        label="Confirmar Senha"
-                        placeholder="EX: ********"
-                        withAsterisk
+                    <PasswordInput
                         radius="md"
-                        required
-                        maxLength={20}
+                        label="Confirmar Senha"
+                        withAsterisk
+                        placeholder="EX: ********"
                     />
                 </Grid.Col>
             </Grid>
