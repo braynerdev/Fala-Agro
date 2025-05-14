@@ -12,25 +12,10 @@ import {
 
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { IconAt } from '@tabler/icons-react';
 import classes from './Login.module.css';
 import logoFalaAgro from '../assets/img/Cópia de FALA-AGRO_logo-primária.png';
-import { GoogleButton } from '../componentes/Login/botaoGoogle';
-import { FacebookButton } from '../componentes/Login/BotaoFacebook';
-import { UsersData } from '../Data/DadosUsers';
-
-  
-
-
-function validarCredenciais(value: { email: string, password: string }) {
-    const user = UsersData.find((u) => u.email === value.email);
-    if (!user) 
-      return { email: 'Email inválido', password: 'Senha inválidas'};
-    else if (user.password !== value.password) 
-      return { password: 'Senha inválidas'};
-    return{}
-}
-
+import { GoogleButton } from '../Components/Login/ButtonGoogle';
+import { FacebookButton } from '../Components/Login/ButtonFacebook';
 
 
 export function Login() {
@@ -39,10 +24,6 @@ export function Login() {
     initialValues: {
       email: '',
       password: '',
-    },
-
-    validate: (values) => {
-      return validarCredenciais(values)
     },
   });
 
@@ -71,7 +52,6 @@ export function Login() {
         <form onSubmit={form.onSubmit((console.log))}>
           <TextInput
             classNames={{ input: `${classes.formInputs} ${form.errors.email ? classes.inputError : ''}`}}
-            leftSection={<IconAt size={16} />}
             label="Email"
             placeholder="hello@gmail.com"
             size="lg"

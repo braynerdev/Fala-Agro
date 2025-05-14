@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import { Login } from './pages/Login'
-import { PerfilAreaDoVendedor } from './pages/AreaDoVendedor/Perfil'
+import { PerfilAreaDoVendedor } from './pages/SellerArea/Profile'
 import { PagNavegacao } from './pages/Index'
-import { DefaultLayout } from './layouts/DefaultLayout'
-import { AreaDoVendedorLayout } from './layouts/AreaDoVendedorLayout'
+import { DefaultLayout } from './Layouts/DefaultLayout'
+import { AreaDoVendedorLayout } from './Layouts/SellerAreaLayout'
+import { Cadastre } from './pages/Cadastre/Cadastre'
 
 export function Router() {
   return (
@@ -13,7 +14,10 @@ export function Router() {
             <Route path='index' element={<PagNavegacao />} />
         </Route>
 
+        
         <Route path="login" element={<Login />} />
+        <Route path="cadastro" element={<Cadastre />} />
+
         
         <Route path='/area-do-vendedor' element={<AreaDoVendedorLayout />}>
             <Route path="perfil" element={<PerfilAreaDoVendedor />} />

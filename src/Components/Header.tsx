@@ -25,13 +25,13 @@ import {
 import logoFalaAgro from '../assets/img/Cópia de FALA-AGRO_logo-primária.png';
 import classes from './Header.module.css';
 import { User } from '../Interface/User';
-import { UsersData, UserPermission } from '../Data/DadosUsers';
+import { UsersData, UserPermission } from '../Data/DataUsers';
 
 
 
 
 function user(UsersData: User[]) {
-  const usuario = UsersData.find(User => User.id === 2);
+  const usuario = UsersData.find(User => User.id === undefined);
   const permissao = UserPermission.find(User => User.idUser === usuario?.id);
   if (permissao) {
     const user_permission = {

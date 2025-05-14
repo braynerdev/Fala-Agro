@@ -1,8 +1,8 @@
-import { CarouselIndex } from "../componentes/Index/Carousels";
-import { CardsCarousel } from "../componentes/Index/CarouselCards";
+import { CarouselIndex } from "../components/Index/Carousels";
+import { CardsCarousel } from "../components/Index/CarouselCards";
 import classes from "./Index.module.css"
-import { CardNoticia } from "../componentes/Index/CardNoticia";
-import { noticias } from "../Data/Noticia";
+import { CardNoticia } from "../Components/Index/CardNews";
+import { noticias } from "../Data/News";
 
 
 

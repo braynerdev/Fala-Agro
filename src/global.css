@@ -30,6 +30,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+.mantine-Notifications-root {
+    position: fixed !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    z-index: 9999 !important;
+}
 
 .mantine-Checkbox-input {
     cursor: pointer;
@@ -37,14 +43,17 @@
 
 .mantine-PasswordInput-input,
 .mantine-TextInput-input,
-.mantine-Checkbox-input {
-    border-color: var(--primaria-verde);
+.mantine-Checkbox-input,
+.mantine-DatePickerInput-input,
+.mantine-Select-input {
+    border-color: var(--primaria-verde) !important;
 }
 
 .mantine-PasswordInput-root:focus-within .mantine-PasswordInput-input,
 .mantine-TextInput-root:focus-within .mantine-TextInput-input,
-.mantine-Checkbox-root:focus-within .mantine-Checkbox-input {
-    box-shadow: 0px 0px 10px var(--primaria-verde);
+.mantine-Checkbox-root:focus-within .mantine-Checkbox-input,.mantine-DatePickerInput-root:focus-within .mantine-DatePickerInput-input,
+.mantine-Select-root:focus-within .mantine-Select-input {
+    box-shadow: 0px 0px 10px var(--primaria-verde) !important;
 }
 
 .mantine-Anchor-root {

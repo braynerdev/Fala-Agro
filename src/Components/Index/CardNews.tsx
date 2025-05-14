@@ -1,9 +1,9 @@
 import { Paper } from "@mantine/core";
-import classes from "./CardNoticia.module.css";
+import classes from "./CardNews.module.css";
 import { Text } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Button } from "@mantine/core";
-import { Noticias } from "../../Interface/Noticias";
+import { Noticias } from "../../Interface/News";
 
 export interface CardNoticiaProps {
     noticias: Noticias[];

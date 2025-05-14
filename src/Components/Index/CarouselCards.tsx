@@ -1,15 +1,13 @@
-'use client';
 import { Carousel } from '@mantine/carousel';
-import { CardEventos } from './CardEventos';
-import { eventos } from '../../Data/Eventos';
+import { CardEventos } from './CardEvents';
+import { eventos } from '../../Data/Events';
 import classes from './CarouselCards.module.css';
 import { IconChevronLeft,IconChevronRight } from '@tabler/icons-react';
 import { EmblaCarouselType } from 'embla-carousel-react';
-import { Text } from '@mantine/core';
-import { ActionIcon, Group } from '@mantine/core';
+import { Text,ActionIcon, Group } from '@mantine/core';
 import { useState } from "react";
 import { CarouselCard } from '../../Interface/CarouselCard';
-import { useWindowSize } from '../respossividade';
+import { useWindowSize } from '../Responsiveness';
 
 
 
@@ -21,7 +19,7 @@ export function CardsCarousel(title: CarouselCard) {
 
     const mobile = width < 768;
 
-    const slides = eventos.sort(() => Math.random() - 0.5).slice(0, 20).map((item) => (
+    const slides = eventos.sort(() => Math.random() - 0.5).slice(0, 10).map((item) => (
         <Carousel.Slide key={item.id}>
             <CardEventos evento={item} />
         </Carousel.Slide>
