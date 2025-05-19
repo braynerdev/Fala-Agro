@@ -63,7 +63,7 @@ export function Cadastre() {
 
     const CadastreUsuario = async (e: FormEvent) => {
         e.preventDefault();
-        let { data, error } = await supabase.auth.signUp({
+        let { error } = await supabase.auth.signUp({
           email: email,
           password: senha,
           options: {

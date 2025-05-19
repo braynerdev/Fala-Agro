@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom'
 import { Login } from './pages/Login'
 import { PerfilAreaDoVendedor } from './pages/SellerArea/Profile'
 import { PagNavegacao } from './pages/Index'
-import { DefaultLayout } from './Layouts/DefaultLayout'
-import { AreaDoVendedorLayout } from './Layouts/SellerAreaLayout'
-import { CadastroLayout } from './Layouts/Cadastro'
+import { DefaultLayout } from './Layouts/DefaultLayout.tsx'
+import { AreaDoVendedorLayout } from './Layouts/SellerAreaLayout.tsx'
+import { CadastroLayout } from './Layouts/Cadastro.tsx'
 import { Cadastre } from './pages/Cadastre/Cadastre'
 
 export function Router() {

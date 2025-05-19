@@ -7,7 +7,6 @@ import { EmblaCarouselType } from 'embla-carousel';
 import { Text,ActionIcon, Group } from '@mantine/core';
 import { useState } from "react";
 import { CarouselCard } from '../../Interface/CarouselCard';
-import { useWindowSize } from '../Responsiveness';
 
 
 
@@ -15,7 +14,6 @@ export function CardsCarousel(title: CarouselCard) {
     const [embla, setEmbla] = useState<EmblaCarouselType | null>(null);
     const handleNext = () => embla?.scrollNext();
     const handlePrev = () => embla?.scrollPrev();
-    const width = useWindowSize();
 
 
     const slides = eventos.sort(() => Math.random() - 0.5).slice(0, 10).map((item) => (

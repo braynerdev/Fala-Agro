@@ -28,7 +28,7 @@ export function Login() {
 
   const login = async (e: FormEvent) => {
     e.preventDefault();
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: email,
       password: senha,
     });
