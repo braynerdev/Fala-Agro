@@ -1,4 +1,4 @@
-import { Permissao } from "../Interface/Permissions";
+import { Permissao } from "../Interface/Dados/Permissions";
 
 export const PermissaoData: Permissao[] = [
     {

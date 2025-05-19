@@ -3,7 +3,7 @@ import classes from "./CardNews.module.css";
 import { Text } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Button } from "@mantine/core";
-import { Noticias } from "../../Interface/News";
+import { Noticias } from "../../Interface/Dados/News";
 
 export interface CardNoticiaProps {
     noticias: Noticias[];
