@@ -1,0 +1,30 @@
+.tituloPrincipal {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.painel {
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.tituloSecao {
+  margin-bottom: 1rem;
+  color: green;
+}
+
+.botaoConfirmar {
+  background-color: #b8f171;
+  color: #000;
+  transition: background-color 0.2s;
+}
+
+.botaoConfirmar:hover {
+  background-color: #a5e64d;
+}
+
+.link {
+  color: #4c6ef5;
+  text-decoration: underline;
+}

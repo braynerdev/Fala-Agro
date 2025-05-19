@@ -5,11 +5,36 @@ import evento3 from "../assets/Events/c523120ff8f4d4ae6fa08ecec7b1b788.png";
 
 export const eventos: Eventos[] = [
     {
-        id: 1,
-        nome: 'Boiada',
-        dataTime: new Date('2025-09-21T19:00:00'),
-        local: 'Vitória de Santo Antão - PE',
-        imagem: evento1,
+    id: 1,
+    nome: 'Boiada',
+    dataTime: new Date('2025-09-21T19:00:00'),
+    local: 'Vitória de Santo Antão - PE',
+    imagem: evento1,
+    imagemBanner: evento1,
+    imagemCartaz: evento1,
+    linkIngresso: 'https://www.ingressosboiada.com.br',
+
+    descricao: 'O evento "Boiada" traz o melhor do sertanejo e da cultura nordestina em uma noite inesquecível com shows ao vivo, comidas típicas e muita animação.',
+    programacao: `19:00 - Abertura dos portões  
+    20:30 - Show de abertura  
+    22:00 - Atração principal: Boiadeiros do Forró  
+    00:00 - Encerramento com DJ`,
+    dias: '21 de setembro de 2025',
+    estrutura: [
+        'Palco principal',
+        'Área VIP',
+        'Praça de alimentação',
+        'Banheiros químicos',
+        'Segurança 24h',
+        'Estacionamento',
+    ],
+    setores: [
+        'Pista',
+        'Área VIP',
+        'Camarote Premium',
+    ],
+    endereco: 'Parque de Exposições, Vitória de Santo Antão - PE, 55600-000',
+    linkMapa: 'https://www.google.com/maps?q=Parque+de+Exposições,+Vitória+de+Santo+Antão,+PE',
     },
     {
         id: 2,
@@ -17,6 +42,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-05-29T10:00:00'),
         local: 'Gravatá - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 3,
@@ -24,6 +50,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-06-15T20:30:00'),
         local: 'Caruaru - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 4,
@@ -31,6 +58,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-06-23T18:00:00'),
         local: 'Limoeiro - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 5,
@@ -38,6 +66,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-07-01T21:00:00'),
         local: 'Surubim - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 6,
@@ -45,6 +74,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-08-10T19:30:00'),
         local: 'Triunfo - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 7,
@@ -52,6 +82,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-07-12T22:00:00'),
         local: 'Arcoverde - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 8,
@@ -59,6 +90,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-09-07T17:00:00'),
         local: 'Olinda - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 9,
@@ -66,6 +98,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-06-10T15:00:00'),
         local: 'Panelas - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 10,
@@ -73,6 +106,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-10-05T20:00:00'),
         local: 'Garanhuns - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 11,
@@ -80,6 +114,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-08-25T18:30:00'),
         local: 'Serra Talhada - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 12,
@@ -87,6 +122,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-07-30T16:00:00'),
         local: 'Palmares - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 13,
@@ -94,6 +130,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-09-15T19:00:00'),
         local: 'Pesqueira - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 14,
@@ -101,6 +138,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-06-28T20:00:00'),
         local: 'São Joaquim do Monte - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 15,
@@ -108,6 +146,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-08-02T22:30:00'),
         local: 'Toritama - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 16,
@@ -115,6 +154,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-10-20T19:00:00'),
         local: 'Nazaré da Mata - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 17,
@@ -122,6 +162,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-09-01T18:00:00'),
         local: 'Petrolina - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     },
     {
         id: 18,
@@ -129,6 +170,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-05-18T14:00:00'),
         local: 'Recife - PE',
         imagem: evento3,
+        imagemBanner: evento3,
     },
     {
         id: 19,
@@ -136,6 +178,7 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-06-22T16:00:00'),
         local: 'Camaragibe - PE',
         imagem: evento1,
+        imagemBanner: evento1,
     },
     {
         id: 20,
@@ -143,5 +186,6 @@ export const eventos: Eventos[] = [
         dataTime: new Date('2025-07-04T23:00:00'),
         local: 'Santa Cruz do Capibaribe - PE',
         imagem: evento2,
+        imagemBanner: evento2,
     }
 ];
