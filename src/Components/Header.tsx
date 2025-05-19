@@ -6,7 +6,6 @@ import {
   IconHome,
   IconSettings,
   IconStar,
-  IconSwitchHorizontal,
   IconTrash,
   IconSearch,
 } from '@tabler/icons-react';
