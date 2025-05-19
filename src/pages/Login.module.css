@@ -1,3 +1,6 @@
+.notification {
+  width: 20rem;
+}
 .wrapper {
   height: 100vh;
   background-size: cover;
@@ -17,7 +20,6 @@
       
       margin: 1% 0 3% 0 !important;
     }
-
     .text {
       gap: 0.3rem;
       margin: 0 !important;

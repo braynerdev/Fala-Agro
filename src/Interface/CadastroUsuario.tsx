@@ -1,5 +1,6 @@
 
-export interface CadastroUsuarioItf {
+export interface DivCadastroUsuarioItf {
     titulo: string;
 }
+
     

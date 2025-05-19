@@ -12,8 +12,15 @@ import classes from './Carousels.module.css';
 export function CarouselIndex() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   return (
-    <Carousel draggable={false} loop withIndicators height="400" slideGap="md" align="start" classNames={{control:classes.control, indicator:classes.indicator}}
-    plugins={[autoplay.current]} onMouseEnter={autoplay.current.stop} onMouseLeave={autoplay.current.reset} controlsOffset="xl"> 
+    <Carousel draggable={false} withIndicators height="400" slideGap="md" classNames={{ control: classes.control, indicator: classes.indicator }}
+      controlsOffset="xl" 
+      plugins={[autoplay.current]}
+      emblaOptions={{
+        loop: true,
+        dragFree: false,
+        align: 'center'
+      }}
+    >
       <Carousel.Slide><Image w='100%' h='100%' src={slide1} /></Carousel.Slide>
       <Carousel.Slide><Image w='100%' h='100%' src={slide2} /></Carousel.Slide>
       <Carousel.Slide><Image w='100%' h='100%' src={slide3} /></Carousel.Slide>

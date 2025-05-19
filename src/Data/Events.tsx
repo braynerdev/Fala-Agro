@@ -1,4 +1,4 @@
-import { Eventos } from "../Interface/Events";
+import { Eventos } from "../Interface/Dados/Events";
 import evento1 from "../assets/Events/20-qbkurb2061drf3q7x84ky4qfn5zao5zjq43m8n55bs.png";
 import evento2 from "../assets/Events/age_493082_ARQ_LOGO_EVENTO_WhatsApp Image 2025-02-11 at 14.07.48.png";
 import evento3 from "../assets/Events/c523120ff8f4d4ae6fa08ecec7b1b788.png";

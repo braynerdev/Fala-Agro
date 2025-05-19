@@ -1,7 +1,7 @@
 import { IconHeart, IconMapPin, IconCalendar, IconClock } from '@tabler/icons-react';
 import { Button, Card, Group, Image, Text } from '@mantine/core';
 import classes from './CardEvents.module.css';
-import { Eventos } from '../../Interface/Events';
+import { Eventos } from '../../Interface/Dados/Events';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
