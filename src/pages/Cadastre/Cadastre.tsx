@@ -4,14 +4,9 @@ import { useState, FormEvent } from 'react'
 import { useRequisicaoEstados, useRequisicaoCep } from '../../Services/Requisicoes'
 import { formatNumero, formatCep, formatCPF, formatTelefone } from '../../Services/Mask'
 import { IconCalendar, IconX, IconCheck } from '@tabler/icons-react'
-import { DatePickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
-import dayjs from 'dayjs';
 import { supabase } from '../../Services/Supabase/Supabase';
 import { useNavigate } from "react-router-dom";
-
-
-
 
 
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
@@ -45,8 +40,17 @@ function getStrength(password: string) {
 
     return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 10);
 }
+const formatDate = (value: string) => {
+    return value
+      .replace(/\D/g, '')
+      .replace(/([0-9]{2})([0-9]{2})/, '$1/$2')
+      .replace(/([0-9]{2})([0-9]{2})/, '$1/$2')
+      .replace(/([0-9]{4})$/, '$1');
+  };
 
 export function Cadastre() {
+    
+ 
     const [cpf_cnpj, setCpfCnpj] = useState('');
     const [telefone, setTelefone] = useState('');
     const [popoverOpened, setPopoverOpened] = useState(false);
@@ -64,26 +68,26 @@ export function Cadastre() {
     const CadastreUsuario = async (e: FormEvent) => {
         e.preventDefault();
         let { error } = await supabase.auth.signUp({
-          email: email,
-          password: senha,
-          options: {
-            data: {
-              displayName: usuario,
-              nome: nome,
-              telefone: telefone,
-              cpf_cnpj: cpf_cnpj,
-              dataNascimento: dataNascimento,
-              cep: cep,
-              logradouro: logradouro,
-              bairro: bairro,
-              cidade: cidade,
-              estado: estadoSelecionado,
-              phone: numero,
-              complemento: complemento,
-              vendedor: true,
-              admin:false,
+            email: email,
+            password: senha,
+            options: {
+                data: {
+                    displayName: usuario,
+                    nome: nome,
+                    telefone: telefone,
+                    cpf_cnpj: cpf_cnpj,
+                    dataNascimento: dataNascimento,
+                    cep: cep,
+                    logradouro: logradouro,
+                    bairro: bairro,
+                    cidade: cidade,
+                    estado: estadoSelecionado,
+                    phone: numero,
+                    complemento: complemento,
+                    vendedor: true,
+                    admin: false,
+                }
             }
-          }
         })
 
         if (error) {
@@ -125,21 +129,18 @@ export function Cadastre() {
                                     />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 3, lg: 2 }}>
-                                    <DatePickerInput
-                                        radius="md"
-                                        valueFormat="DD/MM/YYYY"
-                                        locale='pt-BR'
-                                        minDate={dayjs().subtract(100, 'year').toDate()}
-                                        maxDate={dayjs().subtract(18, 'year').toDate()}
-                                        withAsterisk
-                                        required
+                                    <TextInput
                                         label="Data de Nascimento"
                                         placeholder="EX: 01/01/2000"
-                                        clearable
-                                        value={dataNascimento}
-                                        onChange={(value) => { setDataNascimento(value); }}
-                                        leftSection={<IconCalendar size={18} stroke={1.5} />}
+                                        leftSection={
+                                            <IconCalendar size={18} stroke={1.5} />
+                                        }
+                                        maxLength={10}
+                                        minLength={10}
+                                        value={dataNascimento || ''}
+                                        onChange={(event) => setDataNascimento(formatDate(event.currentTarget.value))}
                                     />
+
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 3, lg: 3 }}>
                                     <TextInput
