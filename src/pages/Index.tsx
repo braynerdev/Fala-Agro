@@ -5,11 +5,6 @@ import { CardNoticia } from "../Components/Index/CardNews";
 import { noticias } from "../Data/News";
 
 
-
-
-
-
-
 export function PagNavegacao() {
   
   return (

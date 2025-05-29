@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom'; // ✅ adicionado useNavigate
 import { eventos } from '../../Data/Events';
 import BannerEvento from '../../Components/Evento/BannerEvento';
 import Carrinho from '../../Components/Evento/Carrinho';
-import { Container, Title, Text, Anchor, Divider, Stack, Group, Button } from '@mantine/core';
+import {
+  Container,
+  Title,
+  Text,
+  Anchor,
+  Divider,
+  Stack,
+  Group,
+  Button,
+} from '@mantine/core';
 import { IconCalendar, IconMapPin, IconClock, IconMap } from '@tabler/icons-react';
 
 const PaginaEvento: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const evento = eventos.find((e) => e.id === Number(id));
+
+  const navigate = useNavigate(); // ✅ hook para redirecionamento
 
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
   const [ingressos, setIngressos] = useState([
@@ -47,8 +58,8 @@ const PaginaEvento: React.FC = () => {
   };
 
   const onFinalizarCompra = () => {
-    alert('Compra finalizada!');
     setCarrinhoAberto(false);
+    navigate('/checkout'); // ✅ redireciona para a página de checkout
   };
 
   return (
@@ -153,7 +164,7 @@ const PaginaEvento: React.FC = () => {
           <Text ta="center" size="sm" c="dimmed">
             <Anchor href="#" style={{ color: '#92D500' }}>Termos e políticas</Anchor> |{' '}
             <Anchor href="#" style={{ color: '#92D500' }}>Denunciar este evento</Anchor>
-          </Text>x
+          </Text>
         </Stack>
       </Container>
 

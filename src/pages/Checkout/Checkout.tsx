@@ -9,78 +9,189 @@ import {
   Group,
   Divider,
   Stack,
+  Checkbox,
+  Image,
+  Box,
+  Select,
 } from '@mantine/core';
 import { useLocation } from 'react-router-dom';
+import classes from './Checkout.module.css';
 
 const Checkout: React.FC = () => {
   const location = useLocation();
   const ingressos = location.state?.ingressos ?? [];
+  const evento = location.state?.evento ?? null;
 
   const total = ingressos.reduce(
     (acc: number, ing: any) => acc + ing.preco * ing.quantidade,
     0
   );
 
+  const taxas = 15;
+  const totalComTaxas = total + taxas;
+
   return (
-    <Container size="lg" py="xl">
-      <Title order={2} mb="xl" ta="center">Finalizar Compra</Title>
+    <Container size="xl" py="xl">
+      <div className={classes.checkoutContainer}>
+        {/* Lado Esquerdo */}
+        <div className={classes.leftColumn}>
+          {/* Etapa 1 */}
+          <Paper withBorder className={classes.section}>
+            <Title order={4} className={classes.sectionTitle} data-index="1">
+              Dados de recebimento
+            </Title>
 
-      <Stack gap="xl">
-        <Paper withBorder shadow="sm" p="md" radius="md">
-          <Title order={4} mb="sm" c="green">1. Dados de recebimento</Title>
-          <TextInput label="Nome completo" placeholder="Nome e sobrenome" required />
-          <TextInput label="E-mail" placeholder="exemplo@email.com" required mt="sm" />
-          <TextInput label="Confirmação de e-mail" placeholder="exemplo@email.com" required mt="sm" />
-          <Text size="sm" c="dimmed" mt="sm">
-            Os ingressos são enviados para o e-mail assim que recebermos a confirmação de pagamento.
-          </Text>
-          <Button mt="md" color="lime">Confirmar</Button>
-        </Paper>
+            <TextInput label="Nome completo" placeholder="Nome Sobrenome" required />
+            <TextInput label="E-mail" placeholder="exemplo@email.com" required mt="sm" />
+            <TextInput label="Confirmação de E-mail" placeholder="exemplo@email.com" required mt="sm" />
 
-        <Paper withBorder shadow="sm" p="md" radius="md">
-          <Title order={4} mb="sm" c="green">2. Informações do ingresso</Title>
-          {ingressos.map((ing: any) => (
-            <Text key={ing.id} fw={500}>{ing.quantidade}x {ing.nome}</Text>
-          ))}
-          <Text mt="sm" size="sm" c="dimmed">
-            Ao clicar em confirmar, você aceita os nossos{' '}
-            <a href="#" style={{ color: '#4c6ef5' }}>Termos e Condições</a>.
-          </Text>
-          <TextInput label="Informe o CPF" placeholder="CPF (apenas números)" required mt="sm" />
-          <Button mt="md" color="lime">Confirmar</Button>
-        </Paper>
+            <Box className={classes.infoBox}>
+              <Text size="sm" c="dimmed" ta="center">
+                Os ingressos são enviados para o E-mail assim que recebermos a confirmação do pagamento
+              </Text>
+            </Box>
 
-        <Paper withBorder shadow="sm" p="md" radius="md">
-          <Title order={4} mb="sm" c="green">3. Forma de pagamento</Title>
-          <Text mb="sm">Cartão emitido no Brasil?</Text>
-          <Radio.Group defaultValue="sim">
-            <Group>
-              <Radio value="sim" label="Sim" />
-              <Radio value="nao" label="Não" />
+            <Group justify="flex-end" mt="md">
+              <Button className={classes.confirmButton}>Confirmar</Button>
             </Group>
-          </Radio.Group>
+          </Paper>
 
-          <TextInput label="Nome impresso no cartão" required mt="md" />
-          <TextInput label="Número do cartão" required mt="sm" />
-          <Group grow mt="sm">
-            <TextInput label="Data de validade" placeholder="MM/AA" required />
-            <TextInput label="Código de segurança" placeholder="000" required />
-          </Group>
+          {/* Etapa 2 */}
+          <Paper withBorder className={classes.section}>
+            <Title order={4} className={classes.sectionTitle} data-index="2">
+              Informações do ingresso
+            </Title>
 
-          <Divider my="lg" />
+            {ingressos.map((ing: any) => (
+              <Text key={ing.id} fw={600}>
+                {ing.quantidade}x {ing.nome} - {ing.tipo}
+              </Text>
+            ))}
 
-          <Text fw={500} mb="sm">Parcelamento</Text>
-          <Radio.Group name="parcelas" defaultValue="1x">
-            <Stack gap="xs">
-              <Radio value="1x" label={`1x de R$ ${total.toFixed(2)}`} />
-              <Radio value="2x" label={`2x de R$ ${(total / 2).toFixed(2)}`} />
-              <Radio value="3x" label={`3x de R$ ${(total / 3).toFixed(2)}`} />
-            </Stack>
-          </Radio.Group>
+            <Checkbox
+              label={
+                <>
+                  Ao clicar em confirmar, você está ciente dos nossos{' '}
+                  <a href="#" className={classes.link}>Termos e Condições</a>.
+                </>
+              }
+              defaultChecked
+              mt="sm"
+            />
 
-          <Button mt="md" color="lime" fullWidth>Confirmar</Button>
-        </Paper>
-      </Stack>
+            <TextInput label="Informe o CPF" placeholder="CPF (Apenas números)" required mt="sm" />
+
+            <Text size="xs" c="dimmed" mt="xs">
+              Ao confirmar, declaro as informações como verdadeiras.
+            </Text>
+
+            <Group justify="flex-end" mt="md">
+              <Button className={classes.confirmButton}>Confirmar</Button>
+            </Group>
+          </Paper>
+
+          {/* Etapa 3 */}
+          <Paper withBorder className={classes.section}>
+            <Title order={4} className={classes.sectionTitle} data-index="3">
+              Forma de pagamento
+            </Title>
+
+            <Text fw={500} mb="xs">Adicione seu cartão</Text>
+
+            <Select
+              label="Bandeira do cartão"
+              placeholder="Selecione a bandeira"
+              data={['Visa', 'Mastercard', 'Elo', 'Hipercard', 'American Express']}
+              required
+              mt="sm"
+            />
+
+            <TextInput label="Nome impresso no cartão" required mt="sm" />
+            <TextInput label="Número do cartão" placeholder="0000 0000 0000 0000" required mt="sm" />
+            <Group grow mt="sm">
+              <TextInput label="Data de validade" placeholder="MM/AA" required />
+              <TextInput label="Código de segurança" placeholder="000" required />
+            </Group>
+
+            <Divider my="lg" />
+
+            <Text fw={500} mb="xs">
+              Parcelamento{' '}
+              <a href="#" style={{ fontSize: '0.8rem', marginLeft: '0.5rem' }}>
+                Veja as condições de parcelamento
+              </a>
+            </Text>
+
+            <Radio.Group name="parcelas" defaultValue="1x">
+              <Stack gap="xs">
+                <Radio value="1x" label={`1x de R$ ${totalComTaxas.toFixed(2)}`} />
+                <Radio value="2x" label={`2x de R$ ${(totalComTaxas / 2).toFixed(2)}`} />
+                <Radio value="3x" label={`3x de R$ ${(totalComTaxas / 3).toFixed(2)}`} />
+                <Radio value="4x" label={`4x de R$ ${(totalComTaxas / 4).toFixed(2)}`} />
+                <Radio value="6x" label={`6x de R$ ${(totalComTaxas / 6).toFixed(2)}`} />
+              </Stack>
+            </Radio.Group>
+
+            <Group justify="flex-end" mt="md">
+              <Button className={classes.confirmButton}>Confirmar</Button>
+            </Group>
+          </Paper>
+        </div>
+
+        {/* Lado Direito */}
+        <div className={classes.rightColumn}>
+          {/* Detalhes do evento */}
+          <Paper withBorder shadow="sm" p="md" radius="md" mb="md">
+            {evento && (
+              <>
+                <Image src={evento.imagemCartaz ?? evento.imagem} alt="Cartaz do Evento" radius="md" />
+                <Box mt="md">
+                  <Text fw={600} color="green">{evento.nome}</Text>
+                  <Text size="sm">📅 {evento.data}</Text>
+                  <Text size="sm">📍 {evento.local}</Text>
+                </Box>
+              </>
+            )}
+          </Paper>
+
+          {/* Resumo do pedido */}
+          <Paper withBorder shadow="sm" p="md" radius="md">
+            <Text fw={600} color="green">Resumo do pedido</Text>
+            <Text size="sm" mt="xs">Terça-feira, 18 de março</Text>
+            <Divider my="sm" />
+
+            <Text fw={600}>Ingresso comum</Text>
+            {ingressos.map((ing: any) => (
+              <Box key={ing.id}>
+                <Group justify="space-between">
+                  <Text>{ing.quantidade}x {ing.nome}</Text>
+                  <Text fw={600}>R$ {(ing.preco * ing.quantidade).toFixed(2)}</Text>
+                </Group>
+                <Text size="xs" c="dimmed">R$ {ing.preco.toFixed(2)} cada</Text>
+              </Box>
+            ))}
+
+            <Divider my="sm" />
+            <Group justify="space-between">
+              <Text>Forma de entrega</Text>
+              <Text fw={600}>R$ 0,00</Text>
+            </Group>
+            <Text size="xs" c="dimmed">Disponível no celular e para impressão</Text>
+
+            <Group justify="space-between" mt="sm">
+              <Text>Taxas</Text>
+              <Text fw={600}>R$ {taxas.toFixed(2)}</Text>
+            </Group>
+
+            <Divider my="sm" />
+            <Group justify="space-between">
+              <Text fw={600}>Total</Text>
+              <Text fw={600}>R$ {totalComTaxas.toFixed(2)}</Text>
+            </Group>
+            <Text size="xs" mt={2}>1 item</Text>
+          </Paper>
+        </div>
+      </div>
     </Container>
   );
 };
