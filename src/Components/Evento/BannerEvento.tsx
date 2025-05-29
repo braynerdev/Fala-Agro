@@ -15,7 +15,7 @@ const BannerEvento: React.FC<BannerEventoPropsComCarrinho> = ({ nome, data, dias
       style={{ backgroundImage: `url(${imagemBanner})` }}
       pos="relative"
     >
-      <Overlay color="#000" opacity={0.55} zIndex={0} />
+      <Overlay color="#000" opacity={0.90} zIndex={0} />
       <Group justify="space-between" maw={1200} mx="auto" p="xl" className={classes.content}>
         <Stack gap="sm" className={classes.info}>
           <Title order={1} className={classes.titulo}>{nome}</Title>
