@@ -61,11 +61,7 @@ const PaginaEvento: React.FC = () => {
 
   const onFinalizarCompra = () => {
     setCarrinhoAberto(false);
-<<<<<<< HEAD
-    navigate('/checkout');
-=======
-    navigate('/checkout?valor'); // ✅ redireciona para a página de checkout
->>>>>>> 1fadb1ff8fbf64c2fd7b7c3495f972f3aab38a75
+    navigate('/checkout?valor');
   };
 
   return (
