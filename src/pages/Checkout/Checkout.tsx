@@ -33,9 +33,7 @@ const Checkout: React.FC = () => {
   return (
     <Container size="xl" py="xl">
       <div className={classes.checkoutContainer}>
-        {/* Lado Esquerdo */}
         <div className={classes.leftColumn}>
-          {/* Etapa 1 */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="1">
               Dados de recebimento
@@ -56,7 +54,6 @@ const Checkout: React.FC = () => {
             </Group>
           </Paper>
 
-          {/* Etapa 2 */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="2">
               Informações do ingresso
@@ -90,7 +87,6 @@ const Checkout: React.FC = () => {
             </Group>
           </Paper>
 
-          {/* Etapa 3 */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="3">
               Forma de pagamento
@@ -138,9 +134,7 @@ const Checkout: React.FC = () => {
           </Paper>
         </div>
 
-        {/* Lado Direito */}
         <div className={classes.rightColumn}>
-          {/* Detalhes do evento */}
           <Paper withBorder shadow="sm" p="md" radius="md" mb="md">
             {evento && (
               <>
@@ -154,7 +148,6 @@ const Checkout: React.FC = () => {
             )}
           </Paper>
 
-          {/* Resumo do pedido */}
           <Paper withBorder shadow="sm" p="md" radius="md">
             <Text fw={600} color="green">Resumo do pedido</Text>
             <Text size="sm" mt="xs">Terça-feira, 18 de março</Text>

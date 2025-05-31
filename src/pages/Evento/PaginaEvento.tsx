@@ -19,7 +19,7 @@ const PaginaEvento: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const evento = eventos.find((e) => e.id === Number(id));
 
-  const navigate = useNavigate(); // ✅ hook para redirecionamento
+  const navigate = useNavigate();
 
   const [carrinhoAberto, setCarrinhoAberto] = useState(false);
   const [ingressos, setIngressos] = useState([
@@ -59,7 +59,7 @@ const PaginaEvento: React.FC = () => {
 
   const onFinalizarCompra = () => {
     setCarrinhoAberto(false);
-    navigate('/checkout'); // ✅ redireciona para a página de checkout
+    navigate('/checkout');
   };
 
   return (
