@@ -11,11 +11,10 @@
     grid-template-columns: 50% 1fr;
     
 
-
-    & .noticiaPrincipal {
+    .noticiaPrincipal {
         width: 99%;
-
-        & .card {
+        transition:all ease 1s;
+        .card {
             height: 50.5rem;
             width: 100%;
             display: flex;
@@ -25,7 +24,7 @@
             background-size: cover;
         }
         
-        & .title {
+        .title {
             font-family: Outfit, sans-serif;
             font-weight: 600;
             color: var(--mantine-color-white);
@@ -34,23 +33,23 @@
             margin-top: var(--mantine-spacing-xs);
         }
         
-        & .category {
+        .category {
             color: var(--mantine-color-white);
             opacity: 0.7;
             font-weight: 700;
             text-transform: uppercase;
         }
     }
-    & .noticiaSecundaria {
+
+    .noticiaSecundaria {
         width: 99%;
         display: grid;
         grid-template-columns: 50% 50%;
         gap: 0.5rem;
         height: 25rem;
+        transition: all ease 1s;
         
-        
-        
-        & .card {
+        .card {
             height: 25rem;
             width: 100%;
             display: flex;
@@ -60,7 +59,7 @@
             background-size: cover;
         }
         
-        & .title {
+        .title {
             font-family: Outfit, sans-serif;
             font-weight: 600;
             color: var(--mantine-color-white);
@@ -69,7 +68,7 @@
             margin-top: var(--mantine-spacing-xs);
         }
         
-        & .category {
+        .category {
             color: var(--mantine-color-white);
             opacity: 0.7;
             font-weight: 700;

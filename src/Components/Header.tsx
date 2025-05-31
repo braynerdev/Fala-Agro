@@ -6,7 +6,6 @@ import {
   IconHome,
   IconSettings,
   IconStar,
-  IconTrash,
   IconSearch,
 } from '@tabler/icons-react';
 import cx from 'clsx';
@@ -20,6 +19,7 @@ import {
   Image,
   Button,
   Autocomplete,
+  Anchor
 } from '@mantine/core';
 import logoFalaAgro from '../assets/img/Cópia de FALA-AGRO_logo-primária.png';
 import classes from './Header.module.css';
@@ -63,7 +63,7 @@ export function Header() {
     <div className={classes.header}>
       <Container className={classes.mainSection} size="md">
         <Group wrap='nowrap' justify="space-between">
-          <Image src={logoFalaAgro} w={200} />
+          <Anchor href="/" component="a"><Image src={logoFalaAgro} w={200} /></Anchor>
           <Group>
             <Autocomplete
               className={classes.search}
@@ -85,21 +85,22 @@ export function Header() {
             withinPortal
           >
             {user?.id ? (
-              
-              <div style={{ width: 'max-content' }}>
+              <div>
                 <Menu.Target>
                   <UnstyledButton
                     className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
                   >
-                    <Group gap={7} ta="center">
+                    <Group gap={5} ta="center" w="max-content">
                       {user?.user_metadata?.img ? (
                         <Image radius={30} src={user?.user_metadata?.img} w={36} />
                       ) : (
                         <Avatar radius={30} name={user?.user_metadata?.nome} color="initials" w={36} />
                       )}
-                      <Text fw={500} size="md" lh={1} mr={1}>
-                        {user?.user_metadata?.displayName}
-                      </Text>
+                      {innerWidth > 900 ? (
+                        <Text fw={500} size="md" lh={1} mr={1}>
+                          {user?.user_metadata?.displayName}
+                        </Text>
+                      ) : null}
                       <IconChevronDown size={16} stroke={2} />
                     </Group>
                   </UnstyledButton>
@@ -127,11 +128,6 @@ export function Header() {
                       <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />} onClick={() => logout()}>
                         Logout
                       </Menu.Item>
-
-                      <Menu.Label>Danger zone</Menu.Label>
-                      <Menu.Item color="red" leftSection={<IconTrash size={16} stroke={1.5} />}>
-                        Deletar conta
-                      </Menu.Item>
                     </>
                   ) : (
                     <>
@@ -154,11 +150,6 @@ export function Header() {
                       </Menu.Item>
 
                       <Menu.Divider />
-
-                      <Menu.Label>Danger zone</Menu.Label>
-                      <Menu.Item color="red" leftSection={<IconTrash size={16} stroke={1.5} />}>
-                        Deletar conta
-                      </Menu.Item>
                     </>
                   )}
                 </Menu.Dropdown>
@@ -166,7 +157,6 @@ export function Header() {
             ) : (
               <div className={classes.DivButtonLog}>
                 <Button component="a" href="/login" radius="lg" variant="default" className={classes.buttonLog}>Entrar</Button>
-                <Button component="a" href="/cadastro/usuario" radius="lg" variant="default" className={classes.buttonLog}>Cadastre-se</Button>
               </div>
 
             )}
