@@ -21,6 +21,10 @@ const Checkout: React.FC = () => {
   const location = useLocation();
   const ingressos = location.state?.ingressos ?? [];
   const evento = location.state?.evento ?? null;
+  const queryParams = new URLSearchParams(location.search)
+  const valor_total = queryParams.get("valor")
+
+
 
   const total = ingressos.reduce(
     (acc: number, ing: any) => acc + ing.preco * ing.quantidade,
@@ -179,7 +183,7 @@ const Checkout: React.FC = () => {
             <Divider my="sm" />
             <Group justify="space-between">
               <Text fw={600}>Total</Text>
-              <Text fw={600}>R$ {totalComTaxas.toFixed(2)}</Text>
+              <Text fw={600}>R$ {valor_total}</Text>
             </Group>
             <Text size="xs" mt={2}>1 item</Text>
           </Paper>

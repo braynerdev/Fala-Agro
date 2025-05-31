@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'; // ✅ adicionado use
 import { eventos } from '../../Data/Events';
 import BannerEvento from '../../Components/Evento/BannerEvento';
 import Carrinho from '../../Components/Evento/Carrinho';
+import { Comentario } from '../../Components/Posts/Comentario';
 import {
   Container,
   Title,
@@ -12,6 +13,7 @@ import {
   Stack,
   Group,
   Button,
+  Flex,
 } from '@mantine/core';
 import { IconCalendar, IconMapPin, IconClock, IconMap } from '@tabler/icons-react';
 
@@ -59,7 +61,11 @@ const PaginaEvento: React.FC = () => {
 
   const onFinalizarCompra = () => {
     setCarrinhoAberto(false);
+<<<<<<< HEAD
     navigate('/checkout');
+=======
+    navigate('/checkout?valor'); // ✅ redireciona para a página de checkout
+>>>>>>> 1fadb1ff8fbf64c2fd7b7c3495f972f3aab38a75
   };
 
   return (
@@ -160,6 +166,18 @@ const PaginaEvento: React.FC = () => {
             </>
           )}
 
+          
+
+          <Divider my="xl" />
+          <Text fw={600}>Comentários</Text>
+          <Flex direction="row" gap={60} wrap="wrap" justify="space-between" >  
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-1.png" nome="Brayner Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-2.png" nome="Pedro Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-3.png" nome="Maria Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-4.png" nome="Pedro Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png" nome="Maria Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+            <Comentario avatar="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-6.png" nome="Pedro Silva" tempo="14" comentario="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."/>
+          </Flex>
           <Divider my="xl" />
           <Text ta="center" size="sm" c="dimmed">
             <Anchor href="#" style={{ color: '#92D500' }}>Termos e políticas</Anchor> |{' '}
@@ -167,7 +185,7 @@ const PaginaEvento: React.FC = () => {
           </Text>
         </Stack>
       </Container>
-
+        
       <Carrinho
         opened={carrinhoAberto}
         onClose={() => setCarrinhoAberto(false)}
