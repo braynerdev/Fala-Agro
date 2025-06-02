@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'; // ✅ adicionado useNavigate
+import { useNavigate, useParams } from 'react-router-dom';
 import { eventos } from '../../Data/Events';
 import BannerEvento from '../../Components/Evento/BannerEvento';
 import Carrinho from '../../Components/Evento/Carrinho';

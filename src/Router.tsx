@@ -6,8 +6,9 @@ import { DefaultLayout } from './layouts/DefaultLayout';
 import { AreaDoVendedorLayout } from './layouts/SellerAreaLayout';
 import { CadastroLayout } from './layouts/Cadastro';
 import { Cadastre } from './pages/Cadastre/Cadastre';
-import PaginaEvento from './pages/Evento/PaginaEvento';
+import PaginaEvento  from './pages/Evento/PaginaEvento';
 import Checkout from './pages/Checkout/Checkout'; 
+import Noticias from './pages/Noticias/Noticias';
 
 export function Router() {
   return (
@@ -17,6 +18,7 @@ export function Router() {
         <Route path='index' element={<PagNavegacao />} />
         <Route path='evento/:id' element={<PaginaEvento />} />
         <Route path='checkout' element={<Checkout />} />
+        <Route path='noticias/:id' element={<Noticias />} />
       </Route>
 
       <Route path='/cadastro' element={<CadastroLayout />}>
