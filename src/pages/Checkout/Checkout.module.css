@@ -1,3 +1,4 @@
+/* Layout principal */
 .checkoutContainer {
   display: flex;
   flex-direction: row;
@@ -21,55 +22,112 @@
   gap: 1rem;
 }
 
+/* Seção */
 .section {
   background-color: #f0fad1;
   padding: 1.5rem;
-  border-radius: 10px;
+  border-radius: 16px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* Título da Seção */
 .sectionTitle {
-  color: green;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  position: relative;
-  padding-left: 1.5rem;
+  background-color: #e7f6b5;
+  color: #3d221b;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+/* Bolinha de índice */
 .sectionTitle::before {
   content: attr(data-index);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1.2rem;
-  height: 1.2rem;
-  background-color: green;
-  color: white;
-  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-color: #92d500;
+  color: #3d221b;
+  font-size: 0.85rem;
   font-weight: bold;
   border-radius: 50%;
-  text-align: center;
-  line-height: 1.2rem;
+  border: 1px solid #3d221b;
 }
 
+/* Inputs e Select */
+input,
+select {
+  background-color: #ffffff;
+  border: 1px solid #92d500;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #92d500;
+  box-shadow: 0 0 0 2px rgba(146, 213, 0, 0.3);
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  color: #3d221b;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+/* Caixa de informações */
+.infoBox {
+  background-color: rgba(146, 213, 0, 0.15);
+  padding: 0.75rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  text-align: center;
+  color: #3d221b;
+  font-weight: 500;
+}
+
+/* Botão Confirmar */
 .confirmButton {
-  background-color: #b8f171;
-  color: #000;
-  transition: background-color 0.2s;
+  background-color: #92d500;
+  color: #3d221b;
+  padding: 0.75rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .confirmButton:hover {
-  background-color: #a5e64d;
+  background-color: #7fb800;
+  transform: translateY(-2px);
 }
 
+/* Links */
 .link {
   color: #4c6ef5;
   text-decoration: underline;
 }
 
-.infoBox {
-  background-color: #e9f5c9;
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin-top: 1rem;
+/* Responsivo */
+@media (max-width: 900px) {
+  .checkoutContainer {
+    flex-direction: column;
+  }
+
+  .rightColumn {
+    position: relative;
+    top: 0;
+  }
 }

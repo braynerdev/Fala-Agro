@@ -2,3 +2,9 @@
     background-color: white !important;
     color: black !important;
 }
+
+@media screen and (max-width: 900px) {
+    .carousel,.slide {
+        height: 12rem !important;
+    }
+}

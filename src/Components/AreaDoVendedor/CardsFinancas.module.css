@@ -1,0 +1,12 @@
+.root {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+  }
+  
+  .label {
+    font-family: Outfit, var(--mantine-font-family);
+  }

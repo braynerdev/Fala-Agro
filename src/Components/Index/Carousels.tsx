@@ -12,7 +12,7 @@ import classes from './Carousels.module.css';
 export function CarouselIndex() {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   return (
-    <Carousel draggable={false} withIndicators height="400" slideGap="md" classNames={{ control: classes.control, indicator: classes.indicator }}
+    <Carousel draggable={false} withIndicators height="500" slideGap="md" classNames={{ root: classes.carousel,slide: classes.slide}}
       controlsOffset="xl" 
       plugins={[autoplay.current]}
       emblaOptions={{
@@ -21,9 +21,9 @@ export function CarouselIndex() {
         align: 'center'
       }}
     >
-      <Carousel.Slide><Image w='100%' h='100%' src={slide1} /></Carousel.Slide>
-      <Carousel.Slide><Image w='100%' h='100%' src={slide2} /></Carousel.Slide>
-      <Carousel.Slide><Image w='100%' h='100%' src={slide3} /></Carousel.Slide>
+      <Carousel.Slide><Image w='100%' h='100%' src={slide1}/></Carousel.Slide>
+      <Carousel.Slide><Image w='100%' h='100%' src={slide2}/></Carousel.Slide>
+      <Carousel.Slide><Image w='100%' h='100%' src={slide3}/></Carousel.Slide>
     </Carousel>
   );
 }

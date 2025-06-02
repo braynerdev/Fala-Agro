@@ -60,9 +60,17 @@ const PaginaEvento: React.FC = () => {
   };
 
   const onFinalizarCompra = () => {
-    setCarrinhoAberto(false);
-    navigate('/checkout?valor');
-  };
+  const valorTotal = ingressos.reduce((acc, ing) => acc + ing.preco * ing.quantidade, 0);
+
+  setCarrinhoAberto(false);
+  navigate(`/checkout?valor=${valorTotal.toFixed(2)}`, {
+    state: {
+      ingressos: ingressos.filter((ing) => ing.quantidade > 0),
+      evento,
+    },
+  });
+};
+
 
   return (
     <>

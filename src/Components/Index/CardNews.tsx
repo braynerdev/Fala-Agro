@@ -2,7 +2,6 @@ import { Paper } from "@mantine/core";
 import classes from "./CardNews.module.css";
 import { Text } from "@mantine/core";
 import { Title } from "@mantine/core";
-import { Button } from "@mantine/core";
 import { Noticias } from "../../Interface/Dados/News";
 
 export interface CardNoticiaProps {
@@ -33,9 +32,6 @@ export function CardNoticia({ noticias, title }: CardNoticiaProps) {
                                     {item.title}
                                 </Title>
                             </div>
-                            <Button w={"max-content"} miw={"40%"} variant="white" color="dark" bg={"var(--cinza-300)"}>
-                                Ver mais
-                            </Button>
                         </Paper>
                     ))}
                 </div>
@@ -47,6 +43,7 @@ export function CardNoticia({ noticias, title }: CardNoticiaProps) {
                             radius="md"
                             style={{ backgroundImage: `url(${item.image})` }}
                             className={classes.card}
+
                         >
                             <div>
                                 <Text className={classes.category} size="xs">
@@ -56,9 +53,6 @@ export function CardNoticia({ noticias, title }: CardNoticiaProps) {
                                     {item.title}
                                 </Title>
                             </div>
-                            <Button w={"max-content"} miw={"40%"} variant="white" color="dark" bg={"var(--cinza-300)"}>
-                                Ver mais
-                            </Button>
                         </Paper>
                     ))}
                 </div>

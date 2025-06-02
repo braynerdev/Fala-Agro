@@ -14,17 +14,50 @@ import {
   Box,
   Select,
 } from '@mantine/core';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import classes from './Checkout.module.css';
+import { useEffect, useState, useRef } from 'react';
 
 const Checkout: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const ingressos = location.state?.ingressos ?? [];
   const evento = location.state?.evento ?? null;
-  const queryParams = new URLSearchParams(location.search)
-  const valor_total = queryParams.get("valor")
 
+  const [formaPagamento, setFormaPagamento] = useState<'pix' | 'credito' | ''>('');
+  const [pixStep, setPixStep] = useState<'documento' | 'qrcode' | ''>('');
+  const [tipoDocumento, setTipoDocumento] = useState<'cpf' | 'cnpj' | ''>('');
+  const [documento, setDocumento] = useState('');
+  const [timer, setTimer] = useState(300); // 5 minutos
+  const intervalRef = useRef<number | null>(null);
 
+  useEffect(() => {
+    if (!evento || ingressos.length === 0) {
+      navigate('/', { replace: true });
+    }
+  }, [evento, ingressos, navigate]);
+
+  useEffect(() => {
+    if (pixStep === 'qrcode') {
+      intervalRef.current = window.setInterval(() => {
+        setTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(intervalRef.current!);
+            setPixStep('');
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [pixStep]);
 
   const total = ingressos.reduce(
     (acc: number, ing: any) => acc + ing.preco * ing.quantidade,
@@ -34,10 +67,17 @@ const Checkout: React.FC = () => {
   const taxas = 15;
   const totalComTaxas = total + taxas;
 
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
   return (
     <Container size="xl" py="xl">
       <div className={classes.checkoutContainer}>
         <div className={classes.leftColumn}>
+          {/* 1 - Dados de recebimento */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="1">
               Dados de recebimento
@@ -58,6 +98,7 @@ const Checkout: React.FC = () => {
             </Group>
           </Paper>
 
+          {/* 2 - Informações do ingresso */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="2">
               Informações do ingresso
@@ -91,53 +132,133 @@ const Checkout: React.FC = () => {
             </Group>
           </Paper>
 
+          {/* 3 - Forma de pagamento */}
           <Paper withBorder className={classes.section}>
             <Title order={4} className={classes.sectionTitle} data-index="3">
               Forma de pagamento
             </Title>
 
-            <Text fw={500} mb="xs">Adicione seu cartão</Text>
-
-            <Select
-              label="Bandeira do cartão"
-              placeholder="Selecione a bandeira"
-              data={['Visa', 'Mastercard', 'Elo', 'Hipercard', 'American Express']}
-              required
+            <Radio.Group
+              value={formaPagamento}
+              onChange={(value: string) => {
+                setFormaPagamento(value as 'pix' | 'credito');
+                setPixStep('');
+                setTimer(300);
+              }}
               mt="sm"
-            />
-
-            <TextInput label="Nome impresso no cartão" required mt="sm" />
-            <TextInput label="Número do cartão" placeholder="0000 0000 0000 0000" required mt="sm" />
-            <Group grow mt="sm">
-              <TextInput label="Data de validade" placeholder="MM/AA" required />
-              <TextInput label="Código de segurança" placeholder="000" required />
-            </Group>
-
-            <Divider my="lg" />
-
-            <Text fw={500} mb="xs">
-              Parcelamento{' '}
-              <a href="#" style={{ fontSize: '0.8rem', marginLeft: '0.5rem' }}>
-                Veja as condições de parcelamento
-              </a>
-            </Text>
-
-            <Radio.Group name="parcelas" defaultValue="1x">
+            >
               <Stack gap="xs">
-                <Radio value="1x" label={`1x de R$ ${totalComTaxas.toFixed(2)}`} />
-                <Radio value="2x" label={`2x de R$ ${(totalComTaxas / 2).toFixed(2)}`} />
-                <Radio value="3x" label={`3x de R$ ${(totalComTaxas / 3).toFixed(2)}`} />
-                <Radio value="4x" label={`4x de R$ ${(totalComTaxas / 4).toFixed(2)}`} />
-                <Radio value="6x" label={`6x de R$ ${(totalComTaxas / 6).toFixed(2)}`} />
+                <Radio value="credito" label="💳 Cartão de Crédito" />
+                <Radio value="pix" label="🟢 Pix" />
               </Stack>
             </Radio.Group>
 
-            <Group justify="flex-end" mt="md">
-              <Button className={classes.confirmButton}>Confirmar</Button>
-            </Group>
+            {/* 📲 PIX - Etapas */}
+            {formaPagamento === 'pix' && pixStep !== 'qrcode' && (
+              <>
+                <Text mt="sm">
+                  Ao final da compra, um <b>QR Code será gerado</b>. Use o aplicativo do banco para escaneá-lo e realizar o pagamento.
+                </Text>
+
+                <Group mt="md">
+                  <Radio.Group
+                    value={tipoDocumento}
+                    onChange={(value) => setTipoDocumento(value as 'cpf' | 'cnpj')}
+                    label="Tipo de documento"
+                    required
+                  >
+                    <Group mt="xs">
+                      <Radio value="cpf" label="CPF" />
+                      <Radio value="cnpj" label="CNPJ" />
+                    </Group>
+                  </Radio.Group>
+
+                  <TextInput
+                    label="CPF/CNPJ"
+                    placeholder="Digite aqui"
+                    value={documento}
+                    onChange={(e) => setDocumento(e.currentTarget.value)}
+                    required
+                  />
+                </Group>
+
+                <Group justify="flex-end" mt="md">
+                  <Button
+                    className={classes.confirmButton}
+                    disabled={!tipoDocumento || !documento}
+                    onClick={() => setPixStep('qrcode')}
+                  >
+                    Gerar QR Code
+                  </Button>
+                </Group>
+              </>
+            )}
+
+            {formaPagamento === 'pix' && pixStep === 'qrcode' && (
+              <Box mt="md" ta="center">
+                <Text fw={600} mb="sm">
+                  Escaneie o QR CODE e pague antes do tempo acabar
+                </Text>
+                <Image src="/seu-qrcode-gerado.png" alt="QR Code Pix" maw={200} mx="auto" />
+                <Box
+                  mt="md"
+                  style={{
+                    backgroundColor: '#92D500',
+                    color: 'white',
+                    display: 'inline-block',
+                    padding: '4px 12px',
+                    borderRadius: '999px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {formatTime(timer)}
+                </Box>
+              </Box>
+            )}
+
+            {/* 💳 Cartão de crédito */}
+            {formaPagamento === 'credito' && (
+              <>
+                <Divider my="lg" />
+                <Text fw={500} mb="xs">Adicione seu cartão</Text>
+
+                <Select
+                  label="Bandeira do cartão"
+                  placeholder="Selecione a bandeira"
+                  data={['Visa', 'Mastercard', 'Elo', 'Hipercard', 'American Express']}
+                  required
+                  mt="sm"
+                />
+                <TextInput label="Nome impresso no cartão" required mt="sm" />
+                <TextInput label="Número do cartão" placeholder="0000 0000 0000 0000" required mt="sm" />
+                <Group grow mt="sm">
+                  <TextInput label="Validade" placeholder="MM/AA" required />
+                  <TextInput label="CVC" placeholder="000" required />
+                </Group>
+
+                <Divider my="lg" />
+                <Text fw={500} mb="xs">
+                  Parcelamento{' '}
+                  <a href="#" style={{ fontSize: '0.8rem', marginLeft: '0.5rem' }}>
+                    Veja as condições
+                  </a>
+                </Text>
+
+                <Radio.Group name="parcelas" defaultValue="1x">
+                  <Stack gap="xs">
+                    <Radio value="1x" label={`1x de R$ ${totalComTaxas.toFixed(2)}`} />
+                    <Radio value="2x" label={`2x de R$ ${(totalComTaxas / 2).toFixed(2)}`} />
+                    <Radio value="3x" label={`3x de R$ ${(totalComTaxas / 3).toFixed(2)}`} />
+                    <Radio value="4x" label={`4x de R$ ${(totalComTaxas / 4).toFixed(2)}`} />
+                    <Radio value="6x" label={`6x de R$ ${(totalComTaxas / 6).toFixed(2)}`} />
+                  </Stack>
+                </Radio.Group>
+              </>
+            )}
           </Paper>
         </div>
 
+        {/* Resumo do pedido */}
         <div className={classes.rightColumn}>
           <Paper withBorder shadow="sm" p="md" radius="md" mb="md">
             {evento && (
@@ -154,10 +275,10 @@ const Checkout: React.FC = () => {
 
           <Paper withBorder shadow="sm" p="md" radius="md">
             <Text fw={600} color="green">Resumo do pedido</Text>
-            <Text size="sm" mt="xs">Terça-feira, 18 de março</Text>
+            <Text size="sm" mt="xs">{evento?.data}</Text>
             <Divider my="sm" />
 
-            <Text fw={600}>Ingresso comum</Text>
+            <Text fw={600}>Ingresso(s)</Text>
             {ingressos.map((ing: any) => (
               <Box key={ing.id}>
                 <Group justify="space-between">
@@ -183,9 +304,9 @@ const Checkout: React.FC = () => {
             <Divider my="sm" />
             <Group justify="space-between">
               <Text fw={600}>Total</Text>
-              <Text fw={600}>R$ {valor_total}</Text>
+              <Text fw={600}>R$ {totalComTaxas.toFixed(2)}</Text>
             </Group>
-            <Text size="xs" mt={2}>1 item</Text>
+            <Text size="xs" mt={2}>{ingressos.length} item(s)</Text>
           </Paper>
         </div>
       </div>
