@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { noticias } from '../../Data/News';
+import { noticias } from '../../Dados/News';
 import classes from './Noticias.module.css';
 
 const PaginaNoticia: React.FC = () => {

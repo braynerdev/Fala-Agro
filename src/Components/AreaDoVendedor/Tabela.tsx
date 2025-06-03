@@ -1,6 +1,6 @@
 import { Anchor, Flex, Group, Progress, Table, Text } from '@mantine/core';
 import classes from './Tabela.module.css';
-import { data2 } from '../../Data/AreaDoVendedor';
+import { data2 } from '../../Dados/AreaDoVendedor';
 
 
 export function Tabela() {

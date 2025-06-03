@@ -1,11 +1,11 @@
 import classes from './Cadastre.module.css'
 import { Button, Flex, Grid, TextInput, Select, Text, Popover, Box, Progress, PasswordInput } from '@mantine/core'
 import { useState, FormEvent } from 'react'
-import { useRequisicaoEstados, useRequisicaoCep } from '../../Services/Requisicoes'
-import { formatNumero, formatCep, formatCPF, formatTelefone } from '../../Services/Mask'
+import { useRequisicaoEstados, useRequisicaoCep } from '../../Servico/Requisicoes'
+import { formatNumero, formatCep, formatCPF, formatTelefone } from '../../Servico/Mascaras'
 import { IconCalendar, IconX, IconCheck } from '@tabler/icons-react'
 import '@mantine/dates/styles.css';
-import { supabase } from '../../Services/Supabase/Supabase';
+import { supabase } from '../../Servico/Supabase/Supabase';
 import { useNavigate } from "react-router-dom";
 import { Notifications } from '@mantine/notifications';
 

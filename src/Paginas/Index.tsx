@@ -2,7 +2,7 @@ import { CarouselIndex } from "../Components/Index/Carousels";
 import { CardsCarousel } from "../Components/Index/CarouselCards";
 import classes from "./Index.module.css"
 import { CardNoticia } from "../Components/Index/CardNews";
-import { noticias } from "../Data/News";
+import { noticias } from "../Dados/News";
 
 
 export function PagNavegacao() {

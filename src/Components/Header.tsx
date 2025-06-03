@@ -23,7 +23,7 @@ import {
 } from '@mantine/core';
 import logoFalaAgro from '../assets/img/Cópia de FALA-AGRO_logo-primária.png';
 import classes from './Header.module.css';
-import { supabase } from '../Services/Supabase/Supabase';
+import { supabase } from '../Servico/Supabase/Supabase';
 import { useEffect } from 'react';
 import { User } from '@supabase/supabase-js'
 import { Avatar } from '@mantine/core';

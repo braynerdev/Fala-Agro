@@ -17,7 +17,7 @@ import logoFalaAgro from '../assets/img/Cópia de FALA-AGRO_logo-primária.png';
 import { GoogleButton } from '../Components/Login/ButtonGoogle';
 import { FacebookButton } from '../Components/Login/ButtonFacebook';
 import { useState, FormEvent } from 'react';
-import { supabase } from '../Services/Supabase/Supabase';
+import { supabase } from '../Servico/Supabase/Supabase';
 import { useNavigate } from 'react-router-dom';
 import { Notifications } from '@mantine/notifications';
 

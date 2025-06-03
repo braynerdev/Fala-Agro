@@ -1,4 +1,4 @@
-import { Header } from '../Components/Cadastre/Header'
+import { Header } from '../Components/Cadastro/Header'
 import { Outlet } from 'react-router-dom'
 import { FooterPadra } from '../Components/Footer'
 

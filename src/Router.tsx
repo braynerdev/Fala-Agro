@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-import { Login } from './pages/Login';
-import { PerfilAreaDoVendedor } from './pages/SellerArea/Profile';
-import { PagNavegacao } from './pages/Index';
+import { Login } from './Paginas/Login';
+import { PerfilAreaDoVendedor } from './Paginas/AreaVendedor/AreaVendedor';
+import { PagNavegacao } from './Paginas/Index';
 import { DefaultLayout } from './layouts/DefaultLayout';
 import { AreaDoVendedorLayout } from './layouts/SellerAreaLayout';
 import { CadastroLayout } from './layouts/Cadastro';
-import { Cadastre } from './pages/Cadastre/Cadastre';
-import PaginaEvento  from './pages/Evento/PaginaEvento';
-import Checkout from './pages/Checkout/Checkout'; 
-import Noticias from './pages/Noticias/Noticias';
+import { Cadastre } from './Paginas/Cadastro/Cadastre';
+import PaginaEvento  from './Paginas/Evento/PaginaEvento';
+import Checkout from './Paginas/Checkout/Checkout'; 
+import Noticias from './Paginas/Noticias/Noticias';
 
 export function Router() {
   return (

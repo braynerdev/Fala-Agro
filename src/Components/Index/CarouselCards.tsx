@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import { CardEventos } from './CardEvents';
-import { eventos } from '../../Data/Events';
+import { eventos } from '../../Dados/Events';
 import classes from './CarouselCards.module.css';
 import { IconChevronLeft,IconChevronRight } from '@tabler/icons-react';
 import { EmblaCarouselType } from 'embla-carousel';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { eventos } from '../../Data/Events';
+import { eventos } from '../../Dados/Events';
 import BannerEvento from '../../Components/Evento/BannerEvento';
 import Carrinho from '../../Components/Evento/Carrinho';
 import { Comentario } from '../../Components/Posts/Comentario';

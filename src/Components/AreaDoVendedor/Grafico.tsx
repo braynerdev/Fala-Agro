@@ -1,5 +1,5 @@
 import { AreaChart } from '@mantine/charts';
-import { data } from '../../Data/AreaDoVendedor';
+import { data } from '../../Dados/AreaDoVendedor';
 import '@mantine/charts/styles.css';
 import { Flex } from '@mantine/core';
 
