@@ -7,6 +7,8 @@ import { IconCalendar, IconX, IconCheck } from '@tabler/icons-react'
 import '@mantine/dates/styles.css';
 import { supabase } from '../../Services/Supabase/Supabase';
 import { useNavigate } from "react-router-dom";
+import { Notifications } from '@mantine/notifications';
+
 
 
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
@@ -64,7 +66,108 @@ export function Cadastre() {
     const [complemento, setComplemento] = useState('');
     const navigate = useNavigate();
 
+    const cadastroUsuario = (e:FormEvent) => {
+        e.preventDefault();
+        let valido: boolean = true;
+    
+        if (nome.split(' ').length < 2) {
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Nome inválido, Precisa ter pelo menos 2 nomes',
+                
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        const formatacao_dt_nascimento = dataNascimento?.split('/');
+        const dia = parseInt(formatacao_dt_nascimento![0]);
+        const mes = parseInt(formatacao_dt_nascimento![1]);
+        const ano = parseInt(formatacao_dt_nascimento![2]);
 
+        if (dataNascimento?.length != 10){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Data de nascimento inválida, Precisa ter 8 caracteres',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+
+        if (dia > 31 || dia < 1 || mes > 12 || mes < 1 || ano > new Date().getFullYear() - 18 || ano < 1900){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Data de nascimento inválida',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        if (telefone.length < 16){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Telefone inválido, Precisa ter pelo menos 14 caracteres',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        if (cpf_cnpj.length != 14 && cpf_cnpj.length != 18){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'CPF|CNPJ inválido, Precisa ter 14 caracteres ou 18 caracteres',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        const emailSplit = email.split('@');
+        if (emailSplit.length !== 2 ||
+            !emailSplit[1].includes('.') ||
+            emailSplit[1].split('.').pop()!.length < 2){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Email inválido',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        
+        if (senha && !(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(senha)){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Senha inválida, Precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula, um número e um símbolo especial',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        if (senha !== confirmarSenha){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'Senhas não coincidem',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        if (cep.length != 9){
+            Notifications.show({
+                title: 'Erro ao fazer cadastro',
+                color: 'red',
+                message: 'CEP inválido, Precisa ter 8 caracteres',
+                autoClose: 5000,
+              });;
+            valido = false;
+        }
+        
+        if (valido){
+            CadastreUsuario(e);
+        }
+                
+    }
     const CadastreUsuario = async (e: FormEvent) => {
         e.preventDefault();
         let { error } = await supabase.auth.signUp({
@@ -113,7 +216,7 @@ export function Cadastre() {
         <div className={classes.container}>
             <div className={classes.cardContainer}>
                 <main>
-                    <form onSubmit={CadastreUsuario}>
+                    <form onSubmit={cadastroUsuario}>
                         <div className={classes.formDiv}>
                             <h2>Usuário</h2>
                             <Grid grow gutter="xs">
@@ -126,6 +229,7 @@ export function Cadastre() {
                                         value={nome}
                                         onChange={(event) => setNome(event.currentTarget.value)}
                                         placeholder="EX: João Silva"
+                                        
                                     />
                                 </Grid.Col>
                                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 3, lg: 2 }}>
@@ -135,6 +239,7 @@ export function Cadastre() {
                                         leftSection={
                                             <IconCalendar size={18} stroke={1.5} />
                                         }
+                                        required
                                         maxLength={10}
                                         minLength={10}
                                         value={dataNascimento || ''}
@@ -169,6 +274,7 @@ export function Cadastre() {
                                 <Grid.Col span={{ base: 12, xs: 12, sm: 6, md: 4, lg: 4 }}>
                                     <TextInput
                                         label="email"
+                                        type="email"
                                         placeholder="EX: email@email.com"
                                         withAsterisk
                                         radius="md"
@@ -310,6 +416,7 @@ export function Cadastre() {
                                         onChange={(value) => setEstadoSelecionado(value || '')}
                                         withAsterisk
                                         searchable
+                                        required
                                     />
                                 </Grid.Col>
                             </Grid>
