@@ -35,8 +35,8 @@ const PaginaNoticia: React.FC = () => {
       <p className={classes.date}>{dataFormatada}</p>
       <hr className={classes.divider} />
       <p className={classes.content}>{noticia.conteudo}</p>
-      <a href="/noticias" className={classes.backLink}>
-        ← Voltar para notícias
+      <a href="/" className={classes.backLink}>
+        ← Voltar para o inicio
       </a>
     </div>
   );
